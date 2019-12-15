@@ -26,6 +26,10 @@
       src: "https://github.com/cdr/code-server/releases/download/{{ code_server_version }}/code-server{{ code_server_version }}-linux-x86_64.tar.gz"
       dest: "{{ code_server_install_dir }}"
       remote_src: yes
+      extra_opts:
+        - --strip-components=1
+        - --wildcards
+        - "*/code-server"
     become: yes
     when: code_server_present is failed
     tags:
